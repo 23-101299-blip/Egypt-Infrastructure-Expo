@@ -1,0 +1,198 @@
+/* Exhibitors.css - V3 RECREATIVED FOR DESKTOP */
+.exhibitors-page {
+  background-color: var(--bg-deep);
+  padding-top: 100px;
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* SIDEBAR - Non-scrolling (DESKTOP) */
+.ex-sidebar {
+  width: 15%;
+  border-right: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 50px 20px;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: var(--bg-deep);
+  z-index: 10;
+}
+
+.vertical-title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 6vw, 7rem);
+  line-height: 1;
+  color: white;
+  letter-spacing: -2px;
+  max-height: 90vh;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.vertical-title span {
+  color: var(--primary);
+}
+
+/* MAIN CONTENT */
+.ex-main {
+  margin-left: 15%;
+  flex: 1;
+  padding: 100px 5% 150px;
+}
+
+.ex-header-creative {
+  margin-bottom: 100px;
+}
+
+.ex-header-creative h4 {
+  color: var(--primary);
+  letter-spacing: 5px;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.ex-header-creative h1 {
+  font-size: 5rem;
+  line-height: 1;
+}
+
+/* SLICE GRID - RESTORED DESKTOP WIDTHS */
+.slice-grid {
+  display: flex;
+  gap: 20px;
+  height: 600px;
+  margin-bottom: 100px;
+}
+
+.slice-item {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.slice-item:hover {
+  flex: 3;
+}
+
+.slice-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: none;
+  transition: all 0.5s ease;
+}
+
+.slice-item:hover .slice-img {
+  transform: scale(1.1);
+}
+
+.slice-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(5,7,10,0.9), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.slice-item:hover .slice-overlay {
+  opacity: 1;
+}
+
+.slice-overlay h3 {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.slice-overlay p {
+  color: var(--primary);
+  font-family: var(--font-subheading);
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+
+/* EXHIBITOR LIST */
+.ex-list-section {
+  margin-top: 150px;
+}
+
+.ex-list-row {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 1fr 1fr;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--glass-border);
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.ex-list-row:hover {
+  background: var(--glass);
+  padding-left: 20px;
+  border-bottom-color: var(--primary);
+}
+
+.ex-num {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  color: var(--primary);
+}
+
+.ex-name-box h3 {
+  font-size: 2rem;
+  letter-spacing: -1px;
+}
+
+.ex-cat-box {
+  font-family: var(--font-subheading);
+  font-weight: 800;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+}
+
+.ex-link-box {
+  text-align: right;
+}
+
+.ex-link-circle {
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+/* RESPONSIVE - MOVED TO MEDIA QUERIES */
+@media (max-width: 1200px) {
+  .ex-sidebar { display: none; }
+  .ex-main { margin-left: 0; padding-top: 150px; }
+  .slice-grid { height: 450px; }
+}
+
+@media (max-width: 768px) {
+  .ex-header-creative { margin-bottom: 50px; }
+  .slice-grid { flex-direction: column; height: auto; gap: 15px; }
+  .slice-item { height: 250px; width: 100%; }
+  .ex-list-row { grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px 0; }
+  .ex-num, .ex-cat-box { display: none; }
+  .ex-name-box h3 { font-size: 1.5rem; }
+}

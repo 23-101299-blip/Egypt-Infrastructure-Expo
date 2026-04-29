@@ -1,0 +1,157 @@
+/* Register.css - RESTORED FULLSCREEN */
+.register-page {
+  background-color: var(--bg-deep);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 5%; /* Fullscreen desktop padding */
+}
+
+.reg-card-ultra {
+  width: 100%;
+  max-width: 1200px;
+  background: white; 
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  min-height: 800px;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+/* LEFT SIDE - THE FORM */
+.reg-form-side {
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #05070a;
+}
+
+.reg-form-side h2 {
+  font-size: 3.5rem;
+  color: #05070a;
+  margin-bottom: 10px;
+}
+
+.reg-form-side p {
+  color: #555;
+  font-family: var(--font-subheading);
+  margin-bottom: 50px;
+}
+
+.reg-input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.pill-input-wrap {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* ... existing pill input styles ... */
+.pill-input-wrap input, .pill-input-wrap select {
+  width: 100%;
+  padding: 18px 25px;
+  border-radius: 100px;
+  border: 1.5px solid #eee;
+  background: #f9f9f9;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  color: #05070a;
+  outline: none;
+}
+
+.reg-submit-btn {
+  background: var(--primary);
+  color: white;
+  padding: 20px;
+  border-radius: 100px;
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* RIGHT SIDE - THE VISUAL (DESKTOP) */
+.reg-visual-side {
+  position: relative;
+  background: #05070a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.reg-visual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+.reg-floating-sphere {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at 30% 30%, #ff6a00, #ff4c00);
+  border-radius: 50%;
+  box-shadow: inset -20px -20px 50px rgba(0,0,0,0.5), 0 30px 60px rgba(255, 77, 0, 0.4);
+  z-index: 2;
+}
+
+.reg-visual-text {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  z-index: 3;
+  color: white;
+}
+
+.reg-visual-text h3 {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.reg-visual-text p {
+  color: var(--primary);
+  font-weight: 800;
+  letter-spacing: 5px;
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+
+/* RESPONSIVE - MOVED EXCLUSIVELY TO MEDIA QUERIES */
+@media (max-width: 1024px) {
+  .register-page { padding: 120px 5% 50px; }
+  .reg-card-ultra { 
+    grid-template-columns: 1fr; 
+    border-radius: 30px; 
+    min-height: auto;
+  }
+  .reg-visual-side { 
+    height: 350px; 
+    order: -1; 
+  }
+  .reg-form-side { 
+    padding: 60px 40px; 
+  }
+  .reg-form-side h2 { font-size: 2.5rem; }
+}
+
+@media (max-width: 600px) {
+  .reg-input-group { grid-template-columns: 1fr; gap: 10px; margin-bottom: 20px; }
+  .reg-form-side { padding: 40px 20px; }
+  .reg-floating-sphere { width: 180px; height: 180px; }
+}

@@ -1,0 +1,50 @@
+/* ========================
+   POPUP AD
+======================== */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
+}
+
+.popup-content {
+  background: #141824;
+  border: 1px solid rgba(255,107,53,0.3);
+  padding: 50px 40px;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  border-radius: 8px;
+}
+
+.popup-content h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--primary-orange);
+}
+
+.popup-content p {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.close-popup {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-popup:hover {
+  color: var(--text-light);
+}

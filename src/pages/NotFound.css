@@ -1,0 +1,103 @@
+/* NotFound.css */
+.not-found-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--bg-deep);
+  padding: 180px 5% 150px; /* Shift down and add space from bottom */
+}
+
+.not-found-icon {
+  width: 120px;
+  height: 120px;
+  background: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  box-shadow: 0 0 40px var(--primary-glow);
+}
+
+.not-found-icon span {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  color: white;
+  line-height: 1;
+}
+
+.error-code {
+  font-family: var(--font-heading);
+  font-size: 10rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.error-code span {
+  width: 120px;
+  height: 120px;
+  border: 15px solid var(--primary);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.separator-gradient {
+  width: 100%;
+  max-width: 500px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--primary), transparent);
+  margin: 40px 0;
+}
+
+.not-found-page h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.not-found-page p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin-bottom: 50px;
+}
+
+.btn-base {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--primary);
+  color: white;
+  padding: 20px 45px;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.btn-base:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px var(--primary-glow);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .not-found-page { padding-top: 150px; }
+  .error-code { font-size: 6rem; }
+  .error-code span { width: 80px; height: 80px; border-width: 10px; }
+  .not-found-icon { width: 80px; height: 80px; }
+  .not-found-icon span { font-size: 3rem; }
+  .not-found-page h2 { font-size: 1.8rem; }
+  .not-found-page p { font-size: 0.9rem; }
+  .btn-base { padding: 15px 30px; font-size: 0.8rem; }
+}
+
+@media (max-width: 480px) {
+  .error-code { font-size: 4rem; }
+  .error-code span { width: 50px; height: 50px; border-width: 8px; }
+}

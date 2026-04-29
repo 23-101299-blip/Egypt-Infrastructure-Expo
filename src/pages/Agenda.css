@@ -1,0 +1,149 @@
+/* Agenda.css - RESTORED FULLSCREEN */
+.agenda-page {
+  background-color: var(--bg-deep);
+  padding-top: 150px;
+}
+
+.ag-hero {
+  padding: 0 5% 100px;
+  text-align: center;
+}
+
+.ag-hero h1 {
+  font-size: 6rem;
+  margin-bottom: 20px;
+}
+
+.ag-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+.ag-tab-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding-bottom: 10px;
+  border-bottom: 2px solid transparent;
+}
+
+.ag-tab-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+/* Timeline Components */
+.ag-timeline {
+  max-width: 1000px; /* Increased for desktop */
+  margin: 0 auto 150px;
+  padding: 0 5%;
+  position: relative;
+}
+
+.ag-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: var(--glass-border);
+}
+
+.ag-sessions {
+  position: relative;
+}
+
+.ag-session {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50%;
+  position: relative;
+  margin-bottom: 60px;
+  width: 100%;
+}
+
+.ag-session:nth-child(even) {
+  justify-content: flex-start;
+  padding-right: 0;
+  padding-left: 50%;
+}
+
+.ag-time-bubble {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  padding: 5px 15px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 900;
+  color: white;
+  z-index: 10;
+}
+
+.ag-card {
+  width: 90%;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  padding: 30px;
+  transition: all 0.4s ease;
+}
+
+.ag-session:nth-child(odd) .ag-card { border-right: 3px solid var(--primary); }
+.ag-session:nth-child(even) .ag-card { border-left: 3px solid var(--primary); }
+
+.ag-card:hover {
+  background: var(--bg-surface);
+  transform: translateY(-5px);
+}
+
+.ag-card h4 {
+  color: var(--primary);
+  font-size: 0.7rem;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.ag-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.speaker-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.speaker-box span {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .ag-hero h1 { font-size: 3rem; }
+  .ag-timeline::before { left: 5%; }
+  .ag-session, .ag-session:nth-child(even) {
+    justify-content: flex-start;
+    padding-left: 10%;
+    padding-right: 0;
+  }
+  .ag-time-bubble { 
+    left: 4.5%; 
+    transform: none; 
+    font-size: 0.6rem; 
+    padding: 3px 10px;
+  }
+  .ag-card { width: 100%; border-left: 2px solid var(--primary) !important; border-right: none !important; }
+  .ag-tabs { gap: 20px; margin-bottom: 40px; }
+  .ag-tab-btn { font-size: 1rem; }
+}
