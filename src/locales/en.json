@@ -1,0 +1,88 @@
+{
+  "common": {
+    "register": "REGISTER",
+    "home": "HOME",
+    "about": "ABOUT",
+    "exhibitors": "EXHIBITORS",
+    "agenda": "AGENDA",
+    "explore": "EXPLORE"
+  },
+  "home": {
+    "heroTitle1": "THE FUTURE",
+    "heroTitle2": "CONSTRUCTED",
+    "heroDesc": "Witness the architectural rebirth of a nation. EIE 2026 is the epicenter of the world's most ambitious mega-projects.",
+    "cta": "SECURE ACCESS",
+    "megaProjects": "MEGA PROJECTS",
+    "opportunity": "Opportunity",
+    "vision": "Vision"
+  },
+  "projects": {
+    "project1": "NEW ADMINISTRATIVE CAPITAL",
+    "project2": "NEW ALAMEIN CITY",
+    "project3": "RAS EL HEKMA"
+  },
+  "about": {
+    "heroTitle": "VISIONARY AMBITION",
+    "whoSub": "ABOUT US",
+    "whoTitle": "WHO ARE WE?",
+    "whoDesc": "Egypt Infrastructure Expo (EIE) is the premier nexus where international innovation meets Egypt's $400bn national development ambition. We are more than an exhibition; we are the catalyst for the 2030 Vision.",
+    "stat1Title": "CLEAN VISION",
+    "stat1Desc": "Transparent government-vetted project roadmaps.",
+    "stat2Title": "MODERN DESIGN",
+    "stat2Desc": "State-of-the-art exhibition floor and digital networking.",
+    "serviceSub": "OUR SERVICES",
+    "serviceTitle": "WHAT WE DO?",
+    "serviceDesc": "We provide a fully integrated ecosystem for infrastructure professionals to collaborate, showcase, and secure project bids within the Egyptian market.",
+    "service1Title": "Project Showcasing",
+    "service1Desc": "Direct exposure to $400bn worth of active projects.",
+    "service2Title": "B2B Matchmaking",
+    "service2Desc": "Intelligent platform connecting with vetted leaders.",
+    "service3Title": "Policy Insight",
+    "service3Desc": "Exclusive access to closed-door regulatory briefings.",
+    "service4Title": "Strategic Growth",
+    "service4Desc": "Tools to scale your business within the continent.",
+    "sectorTitle": "MEGA SECTORS",
+    "sector1": "URBAN CITIES",
+    "sector2": "COASTAL EXPANSION",
+    "sector3": "ENERGY GRID",
+    "sector4": "TRANSPORTATION"
+  },
+  "exhibitors": {
+    "sidebarTitle": "2026 EXHIBITION",
+    "subTitle": "02 // PIONEERS",
+    "title1": "INDUSTRY",
+    "title2": "ARCHITECTS",
+    "searchPlaceholder": "FILTER BY BRAND...",
+    "categoryConst": "CONSTRUCTION",
+    "categoryEnergy": "ENERGY",
+    "categorySmart": "SMART CITIES"
+  },
+  "agenda": {
+    "heroTitle": "CONGRESS AGENDA",
+    "heroDesc": "Two days of high-level strategic discourse on the foundations of a new Egypt.",
+    "day1": "DAY 01",
+    "day2": "DAY 02",
+    "cta": "ADD TO CALENDAR"
+  },
+  "agenda_details": {
+    "speaker1": "Ministry of Transport, Egypt",
+    "room1": "Hall A",
+    "speaker2": "Dr. Ahmed Mansour",
+    "room2": "Executive Suite",
+    "speaker3": "Suez Canal Authority",
+    "room3": "Marine Hub",
+    "speaker4": "Siemens Energy",
+    "room4": "Green Zone",
+    "speaker5": "National Authority for Tunnels",
+    "room5": "Hall B",
+    "topic1": "Innovation in Railway Systems"
+  },
+  "footer": {
+    "desc": "The ultimate meeting point for global infrastructure leaders and Egypt's national visionaries.",
+    "quickLinks": "QUICK LINKS",
+    "contact": "CONTACT US",
+    "newsletter": "STAY INFORMED",
+    "placeholder": "Enter your email",
+    "rights": "All rights reserved."
+  }
+}
