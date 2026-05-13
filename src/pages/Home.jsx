@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -8,129 +8,149 @@ import PageTransition from '../components/PageTransition';
 import './Home.css';
 
 const Home = () => {
-  const { t } = useTranslation();
-  const { scrollYProgress } = useScroll();
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 1.1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0.5]);
+  const { t, i18n } = useTranslation();
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9 },
-    visible: (i) => ({
-      opacity: 1, 
-      y: 0, 
-      scale: 1,
-      transition: { delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-    })
-  };
-
-  // Localized project titles mapping with CORRECT IDs from data.js
-  const getProjectTitle = (id) => {
-    switch(id) {
-      case "new-administrative-capital": return t('projects.project1');
-      case "new-alamein-city": return t('projects.project2');
-      case "ras-el-hekma": return t('projects.project3');
-      default: return "";
-    }
-  };
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <PageTransition>
       <div className="home-page">
-        {/* Cinematic Hero */}
-        <section className="hero-spline">
-          <motion.div className="hero-vertical-title" style={{ opacity }}>EGYPT INFRA</motion.div>
-          
-          <div className="hero-left">
-            <motion.h1 
-              initial={{ opacity: 0, x: -100 }}
+
+        <section className="asymmetric-hero">
+          <div className="hero-content-left">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.1, 1] }}
+              transition={{ duration: 1 }}
             >
-              {t('home.heroTitle1')} <span>{t('home.heroTitle2')}</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 1 }}
-            >
-              {t('home.heroDesc')}
-            </motion.p>
-            <motion.div
-              className="hero-actions"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              <Link to="/register" className="btn-premium">
-                {t('home.cta')} <ArrowUpRight size={20} />
+              <span className="hero-tag">EST. 2026</span>
+              <h1 className="hero-title">
+                BUILDING<br />
+                <span className="outline-text">A NATION</span>
+              </h1>
+              <div className="hero-divider" />
+              <p className="hero-desc">Connecting the world to Egypt's most ambitious infrastructure projects through creative editorial storytelling.</p>
+              <Link to="/register" className="hero-cta-btn">
+                <span>{t('home.cta')}</span>
+                <ArrowUpRight size={20} />
               </Link>
             </motion.div>
           </div>
 
-          <div className="hero-right">
-            <motion.img 
-              style={{ scale }}
-              src="/assets/new_alamein_hero_v2.png" 
-              alt="New Alamein Skyline" 
-              className="hero-img-main"
-            />
-            
+          <div className="hero-visual-right">
             <motion.div 
-              className="hero-stats-overlay"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.7 }}
+              className="hero-mask-wrap"
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="hero-stat">
-                <h2>$400B</h2>
-                <p>{t('home.opportunity')}</p>
+              <div className="hero-image-masked">
+                <img src="/assets/new_alamein_hero_v2.png" alt="Egypt Infrastructure" />
+                <div className="hero-image-overlay" />
               </div>
-              <div className="hero-stat">
-                <h2>{t('home.vision')}</h2>
-                <p>2030</p>
-              </div>
+              
+              {/* Unique Wavy Mask with Path Animation */}
+              <svg className="hero-mask-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <motion.path 
+                  initial={{ d: "M0,0 L35,0 C55,10 15,40 45,50 C75,60 35,90 55,100 L0,100 Z" }}
+                  animate={{ 
+                    d: [
+                      "M0,0 L35,0 C55,10 15,40 45,50 C75,60 35,90 55,100 L0,100 Z",
+                      "M0,0 L40,0 C60,15 20,45 50,55 C80,65 40,85 60,100 L0,100 Z",
+                      "M0,0 L35,0 C55,10 15,40 45,50 C75,60 35,90 55,100 L0,100 Z"
+                    ]
+                  }}
+                  transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  fill="white" 
+                />
+              </svg>
             </motion.div>
           </div>
         </section>
 
-        {/* Projects Grid */}
-        <section className="projects-section" id="mega-projects">
-          <div className="container">
-            <motion.div 
-              className="section-header"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              <h2 style={{ fontSize: '3.5rem', marginBottom: '80px', lineHeight: 1 }}>
-                {t('home.megaProjects').split(' ')[0]} <span style={{ color: 'var(--primary)' }}>{t('home.megaProjects').split(' ')[1] || ''}</span>
-              </h2>
-            </motion.div>
 
-            <div className="projects-grid">
-              {projects.slice(0, 3).map((project, idx) => (
-                <motion.div 
-                  key={project.id}
-                  custom={idx}
-                  className={`project-wrap ${idx === 0 ? 'large' : idx === 1 ? 'small' : 'full'}`}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-100px" }}
-                  variants={cardVariants}
-                >
-                  <img src={project.image} alt={project.title} className="project-img" />
-                  <div className="project-overlay">
-                    <div style={{ color: 'var(--primary)', fontWeight: 'bold', marginBottom: '10px' }}>0{idx + 1}</div>
-                    <h3>{getProjectTitle(project.id)}</h3>
-                    <Link to={`/project/${project.id}`} style={{ color: 'white', marginTop: '20px', display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', fontWeight: '800' }}>
-                      {t('common.explore')} <ArrowUpRight size={16} />
-                    </Link>
+        {/* ══════════════ GEOMETRIC EDITORIAL — MEGA PROJECTS ══════════════ */}
+        <section className="geometric-projects-section">
+          {/* Background Decorative Layer */}
+          <div className="section-bg-blobs">
+            <div className="blob blob-1" />
+            <div className="blob blob-2" />
+            <div className="blob blob-3" />
+          </div>
+
+          <div className="section-header-minimal">
+            <h2 className="editorial-main-title">MEGA<br />PROJECTS</h2>
+          </div>
+
+          <div className="projects-modern-stack">
+            {projects.map((project, idx) => (
+              <motion.div 
+                key={project.id}
+                className={`g-project-row ${idx % 2 !== 0 ? 'row-reverse slant-left' : 'slant-right'}`}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: idx * 0.1 }}
+              >
+                {/* Background Layer (for color blocking without hiding blobs) */}
+                <div className="g-row-bg" />
+
+                {/* Decorative Elements */}
+                <div className={`g-floating-shape ${idx === 0 ? 'shape-1' : idx === 1 ? 'shape-2' : 'shape-3'}`} />
+                
+                <div className={`g-plus-cluster ${idx % 2 === 0 ? 'cluster-1' : 'cluster-2'}`}>
+                  {[...Array(6)].map((_, i) => (
+                    <div key={i} className="plus-icon" />
+                  ))}
+                </div>
+
+                <div className="g-image-col">
+                  <div className="g-image-mask wavy-mask-container">
+                    <img src={project.image} alt={project.title} className="wavy-project-img" />
+                    
+                    {/* Organic Wavy Mask for Projects */}
+                    <svg className="project-mask-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                      <motion.path 
+                        initial={{ d: "M0,0 L100,0 L100,100 L0,100 Z" }}
+                        animate={{ 
+                          d: idx % 2 === 0 ? [
+                            "M25,0 L100,0 L100,100 L45,100 C25,80 55,60 25,50 C-5,40 45,20 25,0 Z",
+                            "M30,0 L100,0 L100,100 L50,100 C30,85 60,65 30,55 C0,45 50,25 30,0 Z",
+                            "M25,0 L100,0 L100,100 L45,100 C25,80 55,60 25,50 C-5,40 45,20 25,0 Z"
+                          ] : [
+                            "M0,0 L75,0 C55,15 85,35 65,50 C45,65 75,85 55,100 L0,100 L0,0 Z",
+                            "M0,0 L80,0 C60,20 90,40 70,55 C50,70 80,90 60,100 L0,100 L0,0 Z",
+                            "M0,0 L75,0 C55,15 85,35 65,50 C45,65 75,85 55,100 L0,100 L0,0 Z"
+                          ]
+                        }}
+                        transition={{
+                          duration: 8 + idx,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                        fill="white"
+                      />
+                    </svg>
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+
+                <div className="g-content-col">
+                  <span className="g-category">MEGA PROJECT / 0{idx + 1}</span>
+                  <h3 className="g-title">{project.title}</h3>
+                  <p className="g-desc">{project.description}</p>
+                  <Link to={`/projects/${project.id}`} className="g-cta-link">
+                    VIEW DETAILS
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </section>
+
       </div>
     </PageTransition>
   );
