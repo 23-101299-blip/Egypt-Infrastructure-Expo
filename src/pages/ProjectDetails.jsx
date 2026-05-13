@@ -63,16 +63,16 @@ const ProjectDetails = () => {
             This monumental development represents a key pillar in the Egypt 2030 Vision, serving as a catalyst for economic growth, urban expansion, and global investment.
           </p>
           
-          <div style={{ marginTop: '60px' }}>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '30px', color: 'var(--primary)' }}>CORE OBJECTIVES</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-              <div style={{ padding: '20px', border: '1px solid var(--glass-border)' }}>
-                <div style={{ color: 'var(--primary)', fontWeight: 'bold' }}>01</div>
-                <div style={{ fontSize: '0.8rem', fontWeight: 'bold', marginTop: '10px' }}>URBAN EXPANSION</div>
+          <div className="objectives-section">
+            <h3 className="objectives-title">CORE OBJECTIVES</h3>
+            <div className="objectives-grid">
+              <div className="objective-card">
+                <div className="obj-num">01</div>
+                <div className="obj-label">URBAN EXPANSION</div>
               </div>
-              <div style={{ padding: '20px', border: '1px solid var(--glass-border)' }}>
-                <div style={{ color: 'var(--primary)', fontWeight: 'bold' }}>02</div>
-                <div style={{ fontSize: '0.8rem', fontWeight: 'bold', marginTop: '10px' }}>ECONOMIC HUB</div>
+              <div className="objective-card">
+                <div className="obj-num">02</div>
+                <div className="obj-label">ECONOMIC HUB</div>
               </div>
             </div>
           </div>

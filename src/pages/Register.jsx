@@ -1,95 +1,81 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { ChevronRight } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import PageTransition from '../components/PageTransition';
 import './Register.css';
 
 const Register = () => {
   const { t, i18n } = useTranslation();
-  const springX = useSpring(useMotionValue(0), { stiffness: 100, damping: 30 });
-  const springY = useSpring(useMotionValue(0), { stiffness: 100, damping: 30 });
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
-  const handleMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    const moveX = (clientX - window.innerWidth / 2) / 20;
-    const moveY = (clientY - window.innerHeight / 2) / 20;
-    springX.set(moveX);
-    springY.set(moveY);
-  };
+  const fields = i18n.language === 'en'
+    ? ['Full Name', 'Job Title', 'Organization']
+    : ['الاسم بالكامل', 'المسمى الوظيفي', 'المؤسسة'];
 
   return (
     <PageTransition>
-      <div className="register-page" onMouseMove={handleMouseMove}>
-        <motion.div 
-          className="reg-card-ultra"
-          initial={{ opacity: 0, y: 50, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        >
-          {/* LEFT: THE FORM */}
-          <div className="reg-form-side">
-            <h2>{t('common.register').split(' ')[0]} <span style={{ color: 'var(--primary)' }}>{t('common.register').split(' ')[1]}</span></h2>
-            <p>{t('home.heroDesc').substring(0, 50)}...</p>
-            
-            <form className="reg-actual-form">
-              <div className="reg-input-group">
-                <div className="pill-input-wrap">
-                  <input type="text" placeholder={i18n.language === 'en' ? "Full Name" : "الاسم بالكامل"} required />
-                </div>
-                <div className="pill-input-wrap">
-                  <input type="text" placeholder={i18n.language === 'en' ? "Job Title" : "المسمى الوظيفي"} required />
-                </div>
-              </div>
+      <div className="register-page">
 
-              <div className="reg-input-group">
-                <div className="pill-input-wrap">
-                  <input type="text" placeholder={i18n.language === 'en' ? "Organization" : "المؤسسة"} required />
-                </div>
-                <div className="pill-input-wrap">
-                  <select required>
-                    <option value="">{i18n.language === 'en' ? "Sector of Interest" : "القطاع المهتم به"}</option>
-                    <option>{t('about.sector1')}</option>
-                    <option>{t('about.sector4')}</option>
-                    <option>{t('about.sector3')}</option>
-                  </select>
-                </div>
+        {/* ── LEFT — CONTENT ── */}
+        <div className="register-left">
+          <motion.div 
+            className="register-form-wrap"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="register-tag">REGISTRATION 2026</span>
+            <h1 className="register-title">
+              JOIN THE<br />
+              <span className="outline-text">MOVEMENT</span>
+            </h1>
+            <p className="register-desc">Secure your place among the industry leaders and visionaries shaping the future of Egypt.</p>
+
+            <form className="register-form">
+              <div className="form-row">
+                <input type="text" placeholder={fields[0]} required />
+                <input type="text" placeholder={fields[1]} required />
+              </div>
+              <div className="form-row">
+                <input type="text" placeholder={fields[2]} required />
+                <select required>
+                  <option value="">{i18n.language === 'en' ? 'Sector of Interest' : 'القطاع المهتم به'}</option>
+                  <option>{t('about.sector1')}</option>
+                  <option>{t('about.sector2')}</option>
+                  <option>{t('about.sector3')}</option>
+                  <option>{t('about.sector4')}</option>
+                </select>
+              </div>
+              <div className="form-row">
+                <input type="email" placeholder={i18n.language === 'en' ? 'Email Address' : 'البريد الإلكتروني'} required />
+                <input type="tel" placeholder={i18n.language === 'en' ? 'Phone Number' : 'رقم الهاتف'} />
               </div>
 
               <motion.button 
                 type="submit" 
-                className="reg-submit-btn"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="register-btn"
+                whileHover={{ x: 5 }}
               >
-                {t('home.cta')} <ChevronRight size={20} style={{ marginInlineStart: '10px' }} />
+                <span>CONFIRM ATTENDANCE</span>
+                <ArrowRight size={20} />
               </motion.button>
             </form>
-          </div>
+          </motion.div>
+        </div>
 
-          {/* RIGHT: THE VISUAL */}
-          <div className="reg-visual-side">
-            <motion.img 
-              src="/assets/new_administrative_capital.png" 
-              alt="Infrastructure" 
-              className="reg-visual-img"
-              style={{ scale: 1.1 }}
-            />
-            <motion.div 
-              className="reg-floating-sphere" 
-              style={{ x: springX, y: springY }}
-            />
-            
-            <div className="reg-visual-text">
-              <motion.h3>{i18n.language === 'en' ? 'NATION REBORN.' : 'نهضة أمة.'}</motion.h3>
-              <motion.p>{t('exhibitors.sidebarTitle')}</motion.p>
-            </div>
+        {/* ── RIGHT — VISUAL MASK ── */}
+        <div className="register-right">
+          <div className="register-mask-container">
+            <img src="/assets/new_administrative_capital.png" alt="Infrastructure" />
+              {/* Unique Smooth Curve Mask for Register */}
+              <svg className="register-mask-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0,0 L40,0 C60,20 40,50 60,80 C70,95 30,100 0,100 Z" fill="white" />
+              </svg>
           </div>
-        </motion.div>
+        </div>
+
       </div>
     </PageTransition>
   );
