@@ -12,32 +12,35 @@ const Navbar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => { setIsOpen(false); }, [location]);
+
+  // Lock body scroll when menu open
   useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
 
   const toggleLanguage = () => {
-    const newLang = i18n.language === 'en' ? 'ar' : 'en';
-    i18n.changeLanguage(newLang);
+    i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en');
   };
 
   const navLinks = [
-    { name: t('common.home'), path: '/' },
-    { name: t('common.about'), path: '/about' },
-    { name: t('common.exhibitors'), path: '/exhibitors' },
-    { name: t('common.agenda'), path: '/agenda' },
+    { name: t('common.home'),       path: '/',           num: '01' },
+    { name: t('common.about'),      path: '/about',      num: '02' },
+    { name: t('common.exhibitors'), path: '/exhibitors', num: '03' },
+    { name: t('common.agenda'),     path: '/agenda',     num: '04' },
   ];
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
+
+        {/* Logo */}
         <Link to="/" className="nav-logo">
           <img src="/assets/logo.png" alt="EIE Logo" />
           <span>EIE 2026</span>
@@ -46,67 +49,70 @@ const Navbar = () => {
         {/* Desktop Links */}
         <div className="nav-links-desktop">
           {navLinks.map((link) => (
-            <Link 
-              key={link.path} 
-              to={link.path} 
+            <Link
+              key={link.path}
+              to={link.path}
               className={location.pathname === link.path ? 'active' : ''}
             >
               {link.name}
-              {location.pathname === link.path && <motion.div layoutId="activeNav" className="active-dot" />}
+              {location.pathname === link.path && (
+                <motion.div layoutId="activeNav" className="active-dot" />
+              )}
             </Link>
           ))}
-          
-          <button className="lang-toggle" onClick={toggleLanguage}>
-            <Globe size={18} />
-            <span>{i18n.language === 'en' ? 'AR' : 'EN'}</span>
-          </button>
 
-          <Link to="/register" className="nav-cta-btn">{t('common.register')}</Link>
+          <Link to="/register" className="nav-cta-btn">
+            {t('common.register')}
+          </Link>
         </div>
 
-        {/* Universal Interaction Group (Always visible) */}
+        {/* Mobile action group */}
         <div className="nav-actions-mobile">
-          <button className="lang-toggle universal-toggle" onClick={toggleLanguage}>
-            <Globe size={18} />
-            <span>{i18n.language === 'en' ? 'AR' : 'EN'}</span>
-          </button>
-          
-          <button className="burger-btn" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          <button className="burger-btn" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+            {isOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Full-screen mobile menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             className="mobile-menu"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            transition={{ type: 'tween', duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="mobile-links">
               {navLinks.map((link, idx) => (
                 <motion.div
                   key={link.path}
-                  initial={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, x: 40 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.1 }}
+                  transition={{ delay: 0.15 + idx * 0.07, duration: 0.5, ease: [0.16,1,0.3,1] }}
                 >
-                  <Link to={link.path} onClick={() => setIsOpen(false)}>
+                  <Link
+                    to={link.path}
+                    data-num={link.num}
+                    onClick={() => setIsOpen(false)}
+                  >
                     {link.name}
                   </Link>
                 </motion.div>
               ))}
+
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45 }}
               >
-                <Link to="/register" className="mobile-cta" onClick={() => setIsOpen(false)}>
-                  {t('common.register')}
+                <Link
+                  to="/register"
+                  className="mobile-cta"
+                  onClick={() => setIsOpen(false)}
+                >
+                  REGISTER
                 </Link>
               </motion.div>
             </div>
