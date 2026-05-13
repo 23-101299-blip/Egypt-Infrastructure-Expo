@@ -1,160 +1,121 @@
 import React, { useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Layout, Smartphone, Code, PenTool, Award } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
+import { ArrowRight, Play, MapPin, Globe, Award } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
 import './About.css';
 
 const About = () => {
-  const { t, i18n } = useTranslation();
-  
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const { scrollYProgress } = useScroll();
-  const titleY = useTransform(scrollYProgress, [0, 0.3], [0, 200]);
-  const imgScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1]);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } }
-  };
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <PageTransition>
-      <div className="about-page">
-        {/* ORANGE GHOST HERO */}
-        <section className="about-hero" style={{ textAlign: 'center' }}>
-          <motion.h1 
-            style={{ y: titleY }}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.5 }}
-          >
-            {t('about.heroTitle').split(' ')[0]}<br />{t('about.heroTitle').split(' ')[1]}
-          </motion.h1>
-        </section>
+      <div className="about-bali-theme">
 
-        {/* WHO ARE WE SECTION */}
-        <section className="who-we-are">
-          <motion.div 
-            className="who-img-wrap"
-            initial={{ opacity: 0, clipPath: 'inset(0% 100% 0% 0%)' }}
-            whileInView={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <motion.img 
-              style={{ scale: imgScale }}
-              src="/assets/new_administrative_capital.png" 
-              alt="Who We Are" 
-              className="who-img-main" 
-            />
-            <div className="who-img-shadow" />
-          </motion.div>
-
-          <motion.div 
-            className="who-content"
-            initial={{ opacity: 0, x: i18n.language === 'ar' ? -50 : 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-          >
-            <motion.h4 
-              initial={{ letterSpacing: '10px', opacity: 0 }}
-              whileInView={{ letterSpacing: '3px', opacity: 1 }}
-              transition={{ duration: 1 }}
+        {/* ══════════════ CINEMATIC HERO ══════════════ */}
+        <section className="bali-hero">
+          <div className="bali-hero-img">
+            <img src="/assets/new_administrative_capital.png" alt="Hero" />
+            <div className="bali-hero-overlay" />
+          </div>
+          
+          <div className="bali-hero-content">
+            <motion.h1 
+              className="bali-hero-title"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
             >
-              {t('about.whoSub')}
-            </motion.h4>
-            <h2>{t('about.whoTitle').split(' ')[0]} {t('about.whoTitle').split(' ')[1]} <span>{t('about.whoTitle').split(' ')[2]}</span></h2>
-            <p>{t('about.whoDesc')}</p>
-            
-            <motion.div className="who-stats" variants={containerVariants} initial="hidden" whileInView="visible">
-              <motion.div className="who-stat-item" variants={itemVariants}>
-                <div className="float-anim"><Award size={40} color="var(--primary)" style={{ marginBottom: '15px' }} /></div>
-                <h5>{t('about.stat1Title')}</h5>
-                <p>{t('about.stat1Desc')}</p>
-              </motion.div>
-              <motion.div className="who-stat-item" variants={itemVariants}>
-                <div className="float-anim" style={{ animationDelay: '1s' }}><Layout size={40} color="var(--primary)" style={{ marginBottom: '15px' }} /></div>
-                <h5>{t('about.stat2Title')}</h5>
-                <p>{t('about.stat2Desc')}</p>
-              </motion.div>
-            </motion.div>
-          </motion.div>
+              EGYPT
+            </motion.h1>
+            <p className="bali-hero-subtitle">Engineering the future of a nation with unmatched ambition.</p>
+          </div>
+
+          {/* Hero Bottom Meta Grid */}
+          <div className="bali-hero-footer">
+            <div className="bali-footer-item">
+              <span className="meta-label">NEW COLLECTION</span>
+              <span className="meta-val">Infrastructure 2026</span>
+            </div>
+            <div className="bali-footer-item">
+              <span className="meta-label">CATEGORY</span>
+              <span className="meta-val">Urban Development</span>
+            </div>
+            <div className="bali-footer-item">
+              <span className="meta-label">TOP PERFORMANCE</span>
+              <span className="meta-val">Mega City Projects</span>
+            </div>
+          </div>
         </section>
 
-        {/* WHAT WE DO SECTION */}
-        <section className="what-we-do">
-          <div className="container">
-            <div className="wwd-container">
-              <div className="wwd-header">
-                <h4>{t('about.serviceSub')}</h4>
-                <motion.h2 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                >
-                  {t('about.serviceTitle').split(' ')[0]} {t('about.serviceTitle').split(' ')[1]} <span>{t('about.serviceTitle').split(' ')[2]}</span>
-                </motion.h2>
-                <p>{t('about.serviceDesc')}</p>
+        {/* ══════════════ FULL-BLEED BENTO GRID ══════════════ */}
+        <div className="bali-grid">
+          
+          {/* Row 1: Intro */}
+          <div className="bali-item bali-desc-muted">
+            <p>Beyond the daily visual inspiration we draw from our heritage, we focus on all we create. To connect each line and piece to the Egyptian soul, used to create moments we are blessed to share with the world from this site.</p>
+          </div>
+          <div className="bali-item bali-title-block">
+            <h2 className="bali-section-title">Legacy</h2>
+            <p className="bali-section-para">A hand-drawn vision of intricate patterns and bright futures, these pieces invite you to interpret your own destiny from the details.</p>
+          </div>
+          <div className="bali-item bali-tall-img span-2">
+            <img src="/assets/tower.png" alt="Tall Tower" />
+            <div className="bali-img-overlay">
+              <p>A piece of<br />paradise in your<br />home</p>
+            </div>
+          </div>
+
+          {/* Row 2: Wide Shop Image */}
+          <div className="bali-item bali-wide-img span-cols-2">
+            <img src="/assets/new_alamein_hero_v2.png" alt="Wide" />
+            <div className="bali-label-bottom">
+              <span>EXPLORE</span>
+              <ArrowRight size={20} />
+            </div>
+          </div>
+
+          {/* Row 3: About Detail */}
+          <div className="bali-item bali-medium-img">
+            <img src="/assets/ras_el_hekma.png" alt="Ras" />
+          </div>
+          <div className="bali-item bali-about-content">
+            <div className="about-centered-box">
+              <h3 className="bali-about-title">About</h3>
+              <p className="bali-about-para">
+                EIE opened in 2026 as a concept hub to provide the latest infrastructure trends from around the globe under one roof at an affordable price. We are now happy to offer our unique vision online.
+              </p>
+              <a href="#" className="bali-about-link">Join the journey</a>
+            </div>
+          </div>
+
+          {/* Row 4: Final Mix */}
+          <div className="bali-item bali-vertical-img">
+            <img src="/assets/new_administrative_capital.png" alt="Cap" />
+          </div>
+          <div className="bali-item bali-new-vision-block">
+            <div className="vision-centered-box">
+              <h4>New Vision</h4>
+              <p>is already in the works</p>
+            </div>
+          </div>
+          <div className="bali-item bali-statue-img">
+            <img src="/assets/tower.png" alt="Statue" />
+            <div className="bali-statue-overlay">
+              <div className="vision-quote">
+                <p>"Architecture is the reach for truth."</p>
+                <span>— Louis Kahn</span>
               </div>
-
-              <motion.div className="wwd-grid" variants={containerVariants} initial="hidden" whileInView="visible">
-                {[
-                  { title: t('about.service1Title'), desc: t('about.service1Desc'), icon: <Layout size={40} /> },
-                  { title: t('about.service2Title'), desc: t('about.service2Desc'), icon: <Smartphone size={40} /> },
-                  { title: t('about.service3Title'), desc: t('about.service3Desc'), icon: <Code size={40} /> },
-                  { title: t('about.service4Title'), desc: t('about.service4Desc'), icon: <PenTool size={40} /> }
-                ].map((item, idx) => (
-                  <motion.div key={idx} className="wwd-card" variants={itemVariants} whileHover={{ y: -10, backgroundColor: 'rgba(255, 77, 0, 0.08)' }}>
-                    <div className="wwd-icon">{item.icon}</div>
-                    <h3>{item.title}</h3>
-                    <p>{item.desc}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
             </div>
           </div>
-        </section>
-
-        {/* MOSAIC SECTORS */}
-        <section className="sector-section">
-          <div className="container">
-            <h2 style={{ marginBottom: '60px', fontSize: '3rem' }}>{t('about.sectorTitle').split(' ')[0]} <span style={{ color: 'var(--primary)' }}>{t('about.sectorTitle').split(' ')[1]}</span></h2>
-            <div className="sector-mosaic">
-              {[
-                { label: "01", title: t('about.sector1'), img: "/assets/new_administrative_capital.png" },
-                { label: "02", title: t('about.sector2'), img: "/assets/ras_el_hekma.png" },
-                { label: "03", title: t('about.sector3'), img: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=800&auto=format&fit=crop" },
-                { label: "04", title: t('about.sector4'), img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800&auto=format&fit=crop" }
-              ].map((item, idx) => (
-                <motion.div 
-                  key={idx} 
-                  className="mosaic-item"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: idx * 0.1 }}
-                >
-                  <img src={item.img} className="mosaic-img" alt={item.title} />
-                  <div className="mosaic-content">
-                    <div style={{ color: 'var(--primary)', fontWeight: 'bold' }}>{item.label}</div>
-                    <h3>{item.title}</h3>
-                  </div>
-                </motion.div>
-              ))}
+          <a href="/register" className="bali-item bali-new-vision-block">
+            <div className="vision-centered-box">
+              <h4>Contact Us</h4>
+              <p>Get in touch with EIE</p>
             </div>
-          </div>
-        </section>
+          </a>
+
+        </div>
+
       </div>
     </PageTransition>
   );
