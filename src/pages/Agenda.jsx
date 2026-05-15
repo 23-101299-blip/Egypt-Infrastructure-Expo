@@ -7,13 +7,43 @@ import './Agenda.css';
 
 const agendaData = (t) => ({
   [t('agenda.day1')]: [
-    { time: "09:00 AM", title: t('about.service1Title'), speaker: "Dr. Ahmed Mansour", room: "Grand Hall A", type: "KEYNOTE" },
-    { time: "11:30 AM", title: t('about.service2Title'), speaker: "Eng. Sarah Fouad", room: "Room 204", type: "PANEL" },
-    { time: "02:00 PM", title: t('about.service3Title'), speaker: "Dr. Khaled Ibrahim", room: "Workshop Zone B", type: "WORKSHOP" },
+    {
+      time:    t('agenda.sessions.s1.time'),
+      title:   t('agenda.sessions.s1.title'),
+      speaker: t('agenda.sessions.s1.speaker'),
+      room:    t('agenda.sessions.s1.room'),
+      type:    t('agenda.sessions.s1.type'),
+    },
+    {
+      time:    t('agenda.sessions.s2.time'),
+      title:   t('agenda.sessions.s2.title'),
+      speaker: t('agenda.sessions.s2.speaker'),
+      room:    t('agenda.sessions.s2.room'),
+      type:    t('agenda.sessions.s2.type'),
+    },
+    {
+      time:    t('agenda.sessions.s3.time'),
+      title:   t('agenda.sessions.s3.title'),
+      speaker: t('agenda.sessions.s3.speaker'),
+      room:    t('agenda.sessions.s3.room'),
+      type:    t('agenda.sessions.s3.type'),
+    },
   ],
   [t('agenda.day2')]: [
-    { time: "10:00 AM", title: t('about.service4Title'), speaker: "International Panel", room: "Main Stage", type: "KEYNOTE" },
-    { time: "01:00 PM", title: "Sustainable Urban Design", speaker: "Green Cities Group", room: "Eco Pavilion", type: "PANEL" },
+    {
+      time:    t('agenda.sessions.s4.time'),
+      title:   t('agenda.sessions.s4.title'),
+      speaker: t('agenda.sessions.s4.speaker'),
+      room:    t('agenda.sessions.s4.room'),
+      type:    t('agenda.sessions.s4.type'),
+    },
+    {
+      time:    t('agenda.sessions.s5.time'),
+      title:   t('agenda.sessions.s5.title'),
+      speaker: t('agenda.sessions.s5.speaker'),
+      room:    t('agenda.sessions.s5.room'),
+      type:    t('agenda.sessions.s5.type'),
+    },
   ],
 });
 
@@ -41,13 +71,13 @@ const Agenda = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
             >
-              <span className="hero-tag">CONFERENCE 2026</span>
+              <span className="hero-tag">{t('agenda.heroTag')}</span>
               <h1 className="hero-title">
-                CURATED<br />
-                <span className="outline-text">INSIGHTS</span>
+                {t('agenda.heroTitle1')}<br />
+                <span className="outline-text">{t('agenda.heroTitle2')}</span>
               </h1>
               <div className="hero-divider" />
-              <p className="hero-desc">A carefully curated timeline of Egypt's most impactful infrastructure debates, panels, and project launches.</p>
+              <p className="hero-desc">{t('agenda.heroDesc')}</p>
             </motion.div>
           </div>
 

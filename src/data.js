@@ -21,3 +21,12 @@ export const projects = [
     details: "Ras El Hekma is a major developmental project on Egypt's North Coast, characterized by extensive waterfront infrastructure, luxury residential zones, and grand tourist resorts aiming to make the destination a premier global attraction year round."
   }
 ];
+
+export const exhibitors = [
+  { id: 1, name: "Orascom Construction", sector: "Infrastructure", booth: "A10", logo: "/assets/orascom.jpg" },
+  { id: 2, name: "Hassan Allam Holding", sector: "Construction", booth: "C05", logo: "/assets/hassan_allam.png" },
+  { id: 3, name: "Arab Contractors", sector: "Public Works", booth: "A01", logo: "/assets/arab_contractors.jpg" },
+  { id: 4, name: "Schneider Electric", sector: "Energy", booth: "B25", logo: "/assets/schneider.jpg" },
+  { id: 5, name: "ABB Egypt", sector: "Technology", booth: "D12", logo: "/assets/abb.jpg" },
+  { id: 6, name: "GAFI", sector: "Investment", booth: "E01", logo: "/assets/gafi.jpg" },
+];

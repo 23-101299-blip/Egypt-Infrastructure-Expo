@@ -383,3 +383,38 @@
   .item-visual { height: 400px; }
   .item-details { padding: 60px 8%; }
 }
+
+/* ─────────── RTL OVERRIDES ─────────── */
+/* Flip entire hero grid: image goes left, text goes right */
+[dir="rtl"] .asymmetric-hero {
+  direction: rtl;
+}
+
+/* Mirror the wavy SVG so the wave comes from the RIGHT edge */
+[dir="rtl"] .hero-mask-svg {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .hero-title {
+  letter-spacing: 0;
+  line-height: 1.45 !important;
+}
+[dir="rtl"] .hero-image-overlay {
+  background: linear-gradient(to left, white, transparent 30%);
+}
+[dir="rtl"] .item-details {
+  text-align: right;
+}
+[dir="rtl"] .ex-showcase-item:hover .item-name,
+[dir="rtl"] .ex-showcase-item:hover .item-desc,
+[dir="rtl"] .ex-showcase-item:hover .item-loc {
+  transform: translateX(-15px);
+}
+[dir="rtl"] .hero-title:hover {
+  transform: translateX(-15px);
+}
+[dir="rtl"] .item-link::after {
+  left: auto;
+  right: 0;
+}
+

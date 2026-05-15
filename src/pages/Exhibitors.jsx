@@ -24,18 +24,18 @@ const Exhibitors = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
             >
-              <span className="hero-tag">EIE PARTNERS 2026</span>
-              <h1 className="hero-title">ARCHITECTS<br /><span className="outline-text">OF MODERN</span><br />EGYPT</h1>
+              <span className="hero-tag">{t('exhibitors.heroTag')}</span>
+              <h1 className="hero-title">{t('exhibitors.heroTitle1')}<br /><span className="outline-text">{t('exhibitors.heroTitle2')}</span><br />{t('exhibitors.heroTitle3')}</h1>
               <div className="hero-divider" />
               
               <div className="ex-stats">
                 <div className="stat-box">
                   <h3>{exhibitors.length}</h3>
-                  <p>Featured Partners</p>
+                  <p>{t('exhibitors.partnersCount')}</p>
                 </div>
                 <div className="stat-box">
                   <h3>12+</h3>
-                  <p>Mega Sectors</p>
+                  <p>{t('exhibitors.sectorsCount')}</p>
                 </div>
               </div>
             </motion.div>
@@ -93,13 +93,13 @@ const Exhibitors = () => {
                   <img src={ex.logo} alt={ex.name} />
                 </div>
                 <div className="item-details">
-                  <span className="item-category">FEATURED EXHIBITOR</span>
-                  <h2 className="item-name">{ex.name}</h2>
+                  <span className="item-category">{t('exhibitors.featuredTag')}</span>
+                  <h2 className="item-name">{t(`exhibitors.companies.${ex.id}`)}</h2>
                   <p className="item-desc">{ex.description}</p>
                   
                   <div className="item-footer">
                     <span className="item-loc">{ex.location}</span>
-                    <a href="#" className="item-link">LEARN MORE +</a>
+                    <a href="#" className="item-link">{t('common.learnMore')}</a>
                   </div>
                 </div>
               </motion.div>

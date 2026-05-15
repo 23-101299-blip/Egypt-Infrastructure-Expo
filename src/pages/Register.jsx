@@ -10,10 +10,6 @@ const Register = () => {
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
-  const fields = i18n.language === 'en'
-    ? ['Full Name', 'Job Title', 'Organization']
-    : ['الاسم بالكامل', 'المسمى الوظيفي', 'المؤسسة'];
-
   return (
     <PageTransition>
       <div className="register-page">
@@ -26,22 +22,22 @@ const Register = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="register-tag">REGISTRATION 2026</span>
+            <span className="register-tag">{t('register.tag')}</span>
             <h1 className="register-title">
-              JOIN THE<br />
-              <span className="outline-text">MOVEMENT</span>
+              {t('register.titlePart1')}<br />
+              <span className="outline-text">{t('register.titlePart2')}</span>
             </h1>
-            <p className="register-desc">Secure your place among the industry leaders and visionaries shaping the future of Egypt.</p>
+            <p className="register-desc">{t('register.desc')}</p>
 
             <form className="register-form">
               <div className="form-row">
-                <input type="text" placeholder={fields[0]} required />
-                <input type="text" placeholder={fields[1]} required />
+                <input type="text" placeholder={t('register.fullName')} required />
+                <input type="text" placeholder={t('register.jobTitle')} required />
               </div>
               <div className="form-row">
-                <input type="text" placeholder={fields[2]} required />
+                <input type="text" placeholder={t('register.organization')} required />
                 <select required>
-                  <option value="">{i18n.language === 'en' ? 'Sector of Interest' : 'القطاع المهتم به'}</option>
+                  <option value="">{t('register.sectorPlaceholder')}</option>
                   <option>{t('about.sector1')}</option>
                   <option>{t('about.sector2')}</option>
                   <option>{t('about.sector3')}</option>
@@ -49,8 +45,8 @@ const Register = () => {
                 </select>
               </div>
               <div className="form-row">
-                <input type="email" placeholder={i18n.language === 'en' ? 'Email Address' : 'البريد الإلكتروني'} required />
-                <input type="tel" placeholder={i18n.language === 'en' ? 'Phone Number' : 'رقم الهاتف'} />
+                <input type="email" placeholder={t('register.email')} required />
+                <input type="tel" placeholder={t('register.phone')} />
               </div>
 
               <motion.button 
@@ -58,7 +54,7 @@ const Register = () => {
                 className="register-btn"
                 whileHover={{ x: 5 }}
               >
-                <span>CONFIRM ATTENDANCE</span>
+                <span>{t('register.submit')}</span>
                 <ArrowRight size={20} />
               </motion.button>
             </form>

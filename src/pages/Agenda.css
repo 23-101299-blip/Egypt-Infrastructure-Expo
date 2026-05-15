@@ -382,3 +382,46 @@
   .timeline-content { width: calc(100% - 100px); margin-left: 100px !important; padding: 30px; }
   .ag-day-tabs-minimal { gap: 30px; }
 }
+
+/* ─────────── RTL OVERRIDES ─────────── */
+/* Flip entire hero grid: image goes left, text goes right */
+[dir="rtl"] .asymmetric-hero {
+  direction: rtl;
+}
+
+/* Mirror the wavy SVG so the wave comes from the RIGHT edge */
+[dir="rtl"] .hero-mask-svg {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .hero-title {
+  letter-spacing: 0;
+  line-height: 1.45 !important;
+}
+
+[dir="rtl"] .hero-image-overlay {
+  background: linear-gradient(to left, white, transparent 30%);
+}
+
+[dir="rtl"] .hero-title:hover {
+  transform: translateX(-15px);
+}
+
+[dir="rtl"] .hero-desc {
+  text-align: right;
+}
+
+[dir="rtl"] .t-title {
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+[dir="rtl"] .timeline-content::after {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .timeline-content:hover .t-meta-item {
+  transform: translateX(-4px);
+}
+

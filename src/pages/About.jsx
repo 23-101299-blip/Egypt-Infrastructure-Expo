@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, MapPin, Globe, Award } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import PageTransition from '../components/PageTransition';
 import './About.css';
 
 const About = () => {
+  const { t } = useTranslation();
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
@@ -25,24 +27,24 @@ const About = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
             >
-              EGYPT
+              {t('about.heroTitle')}
             </motion.h1>
-            <p className="bali-hero-subtitle">Engineering the future of a nation with unmatched ambition.</p>
+            <p className="bali-hero-subtitle">{t('about.heroSubtitle')}</p>
           </div>
 
           {/* Hero Bottom Meta Grid */}
           <div className="bali-hero-footer">
             <div className="bali-footer-item">
-              <span className="meta-label">NEW COLLECTION</span>
-              <span className="meta-val">Infrastructure 2026</span>
+              <span className="meta-label">{t('about.newCollection')}</span>
+              <span className="meta-val">{t('about.infra2026')}</span>
             </div>
             <div className="bali-footer-item">
-              <span className="meta-label">CATEGORY</span>
-              <span className="meta-val">Urban Development</span>
+              <span className="meta-label">{t('about.category')}</span>
+              <span className="meta-val">{t('about.urbanDev')}</span>
             </div>
             <div className="bali-footer-item">
-              <span className="meta-label">TOP PERFORMANCE</span>
-              <span className="meta-val">Mega City Projects</span>
+              <span className="meta-label">{t('about.topPerf')}</span>
+              <span className="meta-val">{t('about.megaProjects')}</span>
             </div>
           </div>
         </section>
@@ -52,16 +54,16 @@ const About = () => {
           
           {/* Row 1: Intro */}
           <div className="bali-item bali-desc-muted">
-            <p>Beyond the daily visual inspiration we draw from our heritage, we focus on all we create. To connect each line and piece to the Egyptian soul, used to create moments we are blessed to share with the world from this site.</p>
+            <p>{t('about.introDesc')}</p>
           </div>
           <div className="bali-item bali-title-block">
-            <h2 className="bali-section-title">Legacy</h2>
-            <p className="bali-section-para">A hand-drawn vision of intricate patterns and bright futures, these pieces invite you to interpret your own destiny from the details.</p>
+            <h2 className="bali-section-title">{t('about.legacyTitle')}</h2>
+            <p className="bali-section-para">{t('about.legacyPara')}</p>
           </div>
           <div className="bali-item bali-tall-img span-2">
             <img src="/assets/tower.png" alt="Tall Tower" />
             <div className="bali-img-overlay">
-              <p>A piece of<br />paradise in your<br />home</p>
+              <p>{t('about.paradise')}</p>
             </div>
           </div>
 
@@ -69,7 +71,7 @@ const About = () => {
           <div className="bali-item bali-wide-img span-cols-2">
             <img src="/assets/new_alamein_hero_v2.png" alt="Wide" />
             <div className="bali-label-bottom">
-              <span>EXPLORE</span>
+              <span>{t('common.explore')}</span>
               <ArrowRight size={20} />
             </div>
           </div>
@@ -80,11 +82,11 @@ const About = () => {
           </div>
           <div className="bali-item bali-about-content">
             <div className="about-centered-box">
-              <h3 className="bali-about-title">About</h3>
+              <h3 className="bali-about-title">{t('about.aboutTitle')}</h3>
               <p className="bali-about-para">
-                EIE opened in 2026 as a concept hub to provide the latest infrastructure trends from around the globe under one roof at an affordable price. We are now happy to offer our unique vision online.
+                {t('about.aboutPara')}
               </p>
-              <a href="#" className="bali-about-link">Join the journey</a>
+              <a href="#" className="bali-about-link">{t('about.joinJourney')}</a>
             </div>
           </div>
 
@@ -94,23 +96,23 @@ const About = () => {
           </div>
           <div className="bali-item bali-new-vision-block">
             <div className="vision-centered-box">
-              <h4>New Vision</h4>
-              <p>is already in the works</p>
+              <h4>{t('about.newVision')}</h4>
+              <p>{t('about.inWorks')}</p>
             </div>
           </div>
           <div className="bali-item bali-statue-img">
             <img src="/assets/tower.png" alt="Statue" />
             <div className="bali-statue-overlay">
               <div className="vision-quote">
-                <p>"Architecture is the reach for truth."</p>
-                <span>— Louis Kahn</span>
+                <p>{t('about.quote')}</p>
+                <span>{t('about.author')}</span>
               </div>
             </div>
           </div>
           <a href="/register" className="bali-item bali-new-vision-block">
             <div className="vision-centered-box">
-              <h4>Contact Us</h4>
-              <p>Get in touch with EIE</p>
+              <h4>{t('about.contactUs')}</h4>
+              <p>{t('about.getInTouch')}</p>
             </div>
           </a>
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { projects } from '../data';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -7,6 +8,7 @@ import './ProjectDetails.css';
 
 const ProjectDetails = () => {
   const { id } = useParams();
+  const { t } = useTranslation();
   const [project, setProject] = useState(null);
 
   useEffect(() => {
@@ -17,10 +19,12 @@ const ProjectDetails = () => {
     }
   }, [id]);
 
+  const pKey = id === 'new-administrative-capital' ? 'nac' : id === 'new-alamein-city' ? 'alamein' : 'ras';
+
   if (!project) return (
     <div style={{ padding: '200px 5%', textAlign: 'center', minHeight: '100vh', background: 'var(--bg-deep)' }}>
-      <h2 style={{ fontSize: '3rem', marginBottom: '40px' }}>PROJECT NOT FOUND</h2>
-      <Link to="/" className="btn-premium">BACK TO ARCHIVE</Link>
+      <h2 style={{ fontSize: '3rem', marginBottom: '40px' }}>{t('projects.notFound')}</h2>
+      <Link to="/" className="btn-premium">{t('common.backToArchive')}</Link>
     </div>
   );
 
@@ -33,7 +37,7 @@ const ProjectDetails = () => {
     >
       <div className="details-header-wrap">
         <Link to="/" className="details-back-btn">
-          <ArrowLeft size={16} /> BACK TO THE ARCHIVE
+          <ArrowLeft size={16} /> {t('common.backToArchive')}
         </Link>
       </div>
       
@@ -45,8 +49,8 @@ const ProjectDetails = () => {
         transition={{ duration: 1.2 }}
       >
         <div className="details-title-box">
-          <div className="badge">GOVERNMENT MEGA-PROJECT</div>
-          <h1>{project.title}</h1>
+          <div className="badge">{t('projects.badge')}</div>
+          <h1>{t(`projects.${pKey}.title`)}</h1>
         </div>
       </motion.div>
 
@@ -57,22 +61,19 @@ const ProjectDetails = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <h2>THE VISION</h2>
-          <p>{project.details || project.description}</p>
-          <p>
-            This monumental development represents a key pillar in the Egypt 2030 Vision, serving as a catalyst for economic growth, urban expansion, and global investment.
-          </p>
+          <h2>{t('projects.vision')}</h2>
+          <p>{t(`projects.${pKey}.details`)}</p>
           
           <div className="objectives-section">
-            <h3 className="objectives-title">CORE OBJECTIVES</h3>
+            <h3 className="objectives-title">{t('projects.objectives')}</h3>
             <div className="objectives-grid">
               <div className="objective-card">
                 <div className="obj-num">01</div>
-                <div className="obj-label">URBAN EXPANSION</div>
+                <div className="obj-label">{t('projects.urbanExpansion')}</div>
               </div>
               <div className="objective-card">
                 <div className="obj-num">02</div>
-                <div className="obj-label">ECONOMIC HUB</div>
+                <div className="obj-label">{t('projects.economicHub')}</div>
               </div>
             </div>
           </div>
@@ -80,36 +81,36 @@ const ProjectDetails = () => {
 
         <aside className="details-sidebar">
           <div className="details-info-card">
-            <h3>PROJECT DOSSIER</h3>
+            <h3>{t('projects.dossier')}</h3>
             <div className="info-item">
-              <span>Status</span>
-              <span>UNDER CONSTRUCTION</span>
+              <span>{t('projects.status')}</span>
+              <span>{t('projects.underConstruction')}</span>
             </div>
             <div className="info-item">
-              <span>Sector</span>
-              <span>INFRASTRUCTURE</span>
+              <span>{t('projects.sector')}</span>
+              <span>{t('projects.infrastructure')}</span>
             </div>
             <div className="info-item">
-              <span>Location</span>
-              <span>{project.title.includes('Alamein') ? 'North Coast' : project.title.includes('Capital') ? 'Cairo East' : 'Suez Zone'}</span>
+              <span>{t('projects.location')}</span>
+              <span>{t(`projects.${pKey}.title`).includes('العلمين') || t(`projects.${pKey}.title`).includes('Alamein') ? (t('common.home') === 'الرئيسية' ? 'الساحل الشمالي' : 'North Coast') : t(`projects.${pKey}.title`).includes('العاصمة') || t(`projects.${pKey}.title`).includes('Capital') ? (t('common.home') === 'الرئيسية' ? 'شرق القاهرة' : 'Cairo East') : (t('common.home') === 'الرئيسية' ? 'منطقة السويس' : 'Suez Zone')}</span>
             </div>
             <div className="info-item">
-              <span>Timeline</span>
+              <span>{t('projects.timeline')}</span>
               <span>2024 - 2030</span>
             </div>
             
             <button className="btn-premium" style={{ width: '100%', marginTop: '40px', justifyContent: 'center' }}>
-              REQUEST SITE BRIEF <ArrowUpRight size={18} />
+              {t('projects.requestBrief')} <ArrowUpRight size={18} />
             </button>
           </div>
           
           <div style={{ padding: '40px', background: 'var(--primary)', color: 'white' }}>
-            <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '1rem', marginBottom: '15px' }}>EXHIBIT HERE</h4>
+            <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '1rem', marginBottom: '15px' }}>{t('projects.exhibitHere')}</h4>
             <p style={{ fontSize: '0.85rem', lineHeight: '1.5', opacity: 0.9 }}>
-              Connect with decision-makers leading the {project.title} development at the Egypt Infrastructure Expo 2026.
+              {t('projects.exhibitDesc')}
             </p>
             <Link to="/register" style={{ color: 'white', fontWeight: 'bold', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px', marginTop: '20px', fontSize: '0.8rem' }}>
-              SECURE YOUR SPACE <ArrowUpRight size={16} />
+              {t('projects.secureSpace')} <ArrowUpRight size={16} />
             </Link>
           </div>
         </aside>
