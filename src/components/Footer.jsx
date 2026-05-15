@@ -7,7 +7,7 @@ import './Footer.css';
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
-  const isRTL = i18n.language === 'ar';
+  const isRTL = i18n.language.startsWith('ar');
 
   const navLinks = [
     { name: t('common.home'), path: '/' },
@@ -24,9 +24,9 @@ const Footer = () => {
         <div className="footer-marquee-wrap">
           <div className="footer-sliding-block">
             <div className="footer-cta-text">
-              <span className="tag-line">Join The Expo</span>
+              <span className="tag-line">{t('footer.joinExpo')}</span>
               <h2 className="footer-cta-title">
-                EGYPT<br /><span>INFRA 2026</span>
+                {t('footer.brandTitle')}<br /><span>{t('footer.infra2026')}</span>
               </h2>
             </div>
           </div>
@@ -77,8 +77,8 @@ const Footer = () => {
                 <div className="profile-dot" />
               </div>
               <div className="brand-labels">
-                <h3 className="brand-main-title dark-text">EGYPT INFRA</h3>
-                <span className="brand-subtitle">INFRASTRUCTURE EXPO 2026</span>
+                <h3 className="brand-main-title dark-text">{t('footer.brandTitle')}</h3>
+                <span className="brand-subtitle">{t('footer.brandSubtitle')}</span>
               </div>
               <div className="sig-social-links">
                 <a href="#" className="sig-soc dark"><Share2 size={15} /></a>
@@ -123,7 +123,7 @@ const Footer = () => {
 
           <div className="footer-newsletter-row centered compact">
             <div className="nl-box">
-              <p className="nl-tagline">STAY UPDATED WITH OUR LATEST NEWS</p>
+              <p className="nl-tagline">{t('footer.stayUpdated')}</p>
               <div className="nl-form-wrap">
                 <input type="email" placeholder={t('footer.placeholder')} />
                 <button className="nl-btn"><Send size={16} /></button>
@@ -131,14 +131,6 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="footer-bottom-legal mini centered">
-            <p>&copy; 2026 EGYPT INFRASTRUCTURE EXPO. {t('footer.rights')}</p>
-            <div className="legal-subs">
-              <a href="#">PRIVACY POLICY</a>
-              <span>|</span>
-              <a href="#">TERMS OF USE</a>
-            </div>
-          </div>
 
         </div>
 

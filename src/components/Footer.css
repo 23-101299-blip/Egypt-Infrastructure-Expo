@@ -303,6 +303,43 @@
 .split-signature-footer.rtl .footer-main-columns { direction: rtl; }
 .split-signature-footer.rtl .col-link:hover { transform: translateX(-5px); }
 
+[dir="rtl"] .footer-cta-title {
+  letter-spacing: 0;
+}
+
+[dir="rtl"] .footer-sliding-block {
+  animation: footer-marquee-slide-rtl 20s linear infinite;
+  padding-right: 5%;
+  padding-left: 0;
+}
+
+@keyframes footer-marquee-slide-rtl {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100vw); }
+}
+
+[dir="rtl"] .footer-wave-svg.left-wave {
+  transform: scaleX(-1);
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .footer-wave-svg.right-wave {
+  transform: scaleX(-1);
+  right: auto;
+  left: 0;
+}
+
+[dir="rtl"] .bg-dark-part.left-part {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .bg-dark-part.right-part {
+  right: auto;
+  left: 0;
+}
+
 /* ─────────────────────────────── RESPONSIVE ─── */
 @media (max-width: 992px) {
   .footer-main-columns { grid-template-columns: 1fr; gap: 40px; text-align: center; }

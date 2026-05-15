@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import './PopupAd.css';
 
 const PopupAd = () => {
+  const { t } = useTranslation();
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -32,13 +34,13 @@ const PopupAd = () => {
             <button className="close-popup" onClick={() => setShow(false)}>
               <X size={24} />
             </button>
-            <h2>Save the Date!</h2>
-            <p>Join thousands of professionals at the Egypt Infrastructure Expo.</p>
-            <h3 style={{ marginBottom: '20px', color: 'var(--text-light)' }}>
-              March 18 – 20, 2026<br />
-              Egypt International Exhibition Center
+            <h2>{t('popup.title')}</h2>
+            <p>{t('popup.desc')}</p>
+            <h3 className="popup-date-info">
+              {t('popup.date')}<br />
+              {t('popup.location')}
             </h3>
-            <button className="btn-primary" onClick={() => setShow(false)}>Register Free</button>
+            <button className="btn-primary" onClick={() => setShow(false)}>{t('popup.cta')}</button>
           </motion.div>
         </motion.div>
       )}
