@@ -23,13 +23,13 @@ const Home = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
             >
-              <span className="hero-tag">EST. 2026</span>
+              <span className="hero-tag">{t('home.heroTag')}</span>
               <h1 className="hero-title">
-                BUILDING<br />
-                <span className="outline-text">A NATION</span>
+                {t('home.heroTitle1')}<br />
+                <span className="outline-text">{t('home.heroTitle2')}</span>
               </h1>
               <div className="hero-divider" />
-              <p className="hero-desc">Connecting the world to Egypt's most ambitious infrastructure projects through creative editorial storytelling.</p>
+              <p className="hero-desc">{t('home.heroDesc')}</p>
               <Link to="/register" className="hero-cta-btn">
                 <span>{t('home.cta')}</span>
                 <ArrowUpRight size={20} />
@@ -80,10 +80,18 @@ const Home = () => {
             <div className="blob blob-1" />
             <div className="blob blob-2" />
             <div className="blob blob-3" />
+            <div className="blob blob-4" />
           </div>
 
           <div className="section-header-minimal">
-            <h2 className="editorial-main-title">MEGA<br />PROJECTS</h2>
+            <h2 className="editorial-main-title">
+              {t('home.megaProjects').split(' ').map((word, i) => (
+                <React.Fragment key={i}>
+                  {word}
+                  {i === 0 && <br />}
+                </React.Fragment>
+              ))}
+            </h2>
           </div>
 
           <div className="projects-modern-stack">
@@ -139,11 +147,11 @@ const Home = () => {
                 </div>
 
                 <div className="g-content-col">
-                  <span className="g-category">MEGA PROJECT / 0{idx + 1}</span>
-                  <h3 className="g-title">{project.title}</h3>
-                  <p className="g-desc">{project.description}</p>
+                  <span className="g-category">{t('home.projectLabel')} / 0{idx + 1}</span>
+                  <h3 className="g-title">{t(`projects.${project.id === 'new-administrative-capital' ? 'nac' : project.id === 'new-alamein-city' ? 'alamein' : 'ras'}.title`)}</h3>
+                  <p className="g-desc">{t(`projects.${project.id === 'new-administrative-capital' ? 'nac' : project.id === 'new-alamein-city' ? 'alamein' : 'ras'}.desc`)}</p>
                   <Link to={`/projects/${project.id}`} className="g-cta-link">
-                    VIEW DETAILS
+                    {t('common.viewDetails')}
                   </Link>
                 </div>
               </motion.div>
