@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Navbar from './components/Navbar.jsx';
@@ -10,42 +10,80 @@ import './index.css';
 
 function App() {
   const { i18n } = useTranslation();
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const dotRef = useRef(null);
+  const ringRef = useRef(null);
+  const mouse = useRef({ x: 0, y: 0 });
+  const ring = useRef({ x: 0, y: 0 });
+  const animFrame = useRef(null);
 
-  // Handle RTL/LTR Direction
+  // RTL / LTR
   useEffect(() => {
-    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    const isAr = i18n.language.startsWith('ar');
+    document.documentElement.dir = isAr ? 'rtl' : 'ltr';
     document.documentElement.lang = i18n.language;
-    
-    // Update body font for Arabic
-    if (i18n.language === 'ar') {
+    if (isAr) {
       document.body.classList.add('arabic-font');
     } else {
       document.body.classList.remove('arabic-font');
     }
   }, [i18n.language]);
 
+  // Custom cursor
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+    const handleMove = (e) => {
+      mouse.current = { x: e.clientX, y: e.clientY };
+      if (dotRef.current) {
+        dotRef.current.style.left = e.clientX + 'px';
+        dotRef.current.style.top = e.clientY + 'px';
+      }
     };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+
+    const handleEnter = () => {
+      dotRef.current?.classList.add('hovering');
+      ringRef.current?.classList.add('hovering');
+    };
+    const handleLeave = () => {
+      dotRef.current?.classList.remove('hovering');
+      ringRef.current?.classList.remove('hovering');
+    };
+
+    const animate = () => {
+      ring.current.x += (mouse.current.x - ring.current.x) * 0.1;
+      ring.current.y += (mouse.current.y - ring.current.y) * 0.1;
+      if (ringRef.current) {
+        ringRef.current.style.left = ring.current.x + 'px';
+        ringRef.current.style.top = ring.current.y + 'px';
+      }
+      animFrame.current = requestAnimationFrame(animate);
+    };
+
+    window.addEventListener('mousemove', handleMove);
+    animFrame.current = requestAnimationFrame(animate);
+
+    // Add hover class for interactive elements
+    const interactives = document.querySelectorAll('a, button, [class*="card"], [class*="item"], [class*="row"]');
+    interactives.forEach(el => {
+      el.addEventListener('mouseenter', handleEnter);
+      el.addEventListener('mouseleave', handleLeave);
+    });
+
+    return () => {
+      window.removeEventListener('mousemove', handleMove);
+      cancelAnimationFrame(animFrame.current);
+    };
   }, []);
 
   return (
     <Router>
+      {/* Custom Cursor */}
+      <div className="cursor-dot" ref={dotRef} />
+      <div className="cursor-ring" ref={ringRef} />
+
+      {/* Noise film grain */}
+      <div className="noise-overlay" />
+
       <Preloader />
       <PopupAd />
-      
-      {/* Dynamic Background Glow */}
-      <div 
-        className="follow-glow" 
-        style={{ 
-          transform: `translate(${mousePos.x}px, ${mousePos.y}px)` 
-        }} 
-      />
-
       <Navbar />
       <AppRoutes />
       <Footer />

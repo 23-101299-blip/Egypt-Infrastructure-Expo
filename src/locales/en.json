@@ -5,84 +5,175 @@
     "about": "ABOUT",
     "exhibitors": "EXHIBITORS",
     "agenda": "AGENDA",
-    "explore": "EXPLORE"
+    "explore": "EXPLORE",
+    "viewDetails": "VIEW DETAILS",
+    "learnMore": "LEARN MORE +",
+    "backToArchive": "BACK TO THE ARCHIVE",
+    "secureAccess": "SECURE ACCESS"
   },
   "home": {
-    "heroTitle1": "THE FUTURE",
-    "heroTitle2": "CONSTRUCTED",
-    "heroDesc": "Witness the architectural rebirth of a nation. EIE 2026 is the epicenter of the world's most ambitious mega-projects.",
+    "heroTag": "EST. 2026",
+    "heroTitle1": "BUILDING",
+    "heroTitle2": "A NATION",
+    "heroDesc": "Connecting the world to Egypt's most ambitious infrastructure projects through creative editorial storytelling.",
     "cta": "SECURE ACCESS",
     "megaProjects": "MEGA PROJECTS",
     "opportunity": "Opportunity",
-    "vision": "Vision"
+    "vision": "Vision",
+    "projectLabel": "MEGA PROJECT"
   },
   "projects": {
-    "project1": "NEW ADMINISTRATIVE CAPITAL",
-    "project2": "NEW ALAMEIN CITY",
-    "project3": "RAS EL HEKMA"
+    "nac": {
+      "title": "New Administrative Capital",
+      "desc": "A smart city covering 700 sq km featuring Africa's tallest tower and a giant green park. The future seat of government and financial hub.",
+      "details": "The New Administrative Capital (NAC) is a large-scale project in Egypt that has been under construction since 2015. It represents a key pillar in the Egypt 2030 Vision, serving as a catalyst for economic growth, urban expansion, and global investment."
+    },
+    "alamein": {
+      "title": "New Alamein City",
+      "desc": "A modern coastal skyline featuring tall glass skyscrapers overlooking the Mediterranean sea.",
+      "details": "New Alamein is one of the fourth generation cities being built in Egypt. It lies on the Mediterranean Sea, transforming the North Coast into a year-round urban center."
+    },
+    "ras": {
+      "title": "Ras El Hekma",
+      "desc": "The crown jewel of Egypt's North Coast development, transforming the Mediterranean coastline into a luxury hub.",
+      "details": "Ras El Hekma is a major developmental project characterized by extensive waterfront infrastructure, luxury residential zones, and grand tourist resorts."
+    },
+    "dossier": "PROJECT DOSSIER",
+    "status": "Status",
+    "underConstruction": "UNDER CONSTRUCTION",
+    "sector": "Sector",
+    "infrastructure": "INFRASTRUCTURE",
+    "location": "Location",
+    "timeline": "Timeline",
+    "requestBrief": "REQUEST SITE BRIEF",
+    "exhibitHere": "EXHIBIT HERE",
+    "exhibitDesc": "Connect with decision-makers leading the development at the Egypt Infrastructure Expo 2026.",
+    "secureSpace": "SECURE YOUR SPACE",
+    "vision": "THE VISION",
+    "objectives": "CORE OBJECTIVES",
+    "urbanExpansion": "URBAN EXPANSION",
+    "economicHub": "ECONOMIC HUB",
+    "notFound": "PROJECT NOT FOUND",
+    "badge": "GOVERNMENT MEGA-PROJECT"
   },
   "about": {
-    "heroTitle": "VISIONARY AMBITION",
-    "whoSub": "ABOUT US",
-    "whoTitle": "WHO ARE WE?",
-    "whoDesc": "Egypt Infrastructure Expo (EIE) is the premier nexus where international innovation meets Egypt's $400bn national development ambition. We are more than an exhibition; we are the catalyst for the 2030 Vision.",
-    "stat1Title": "CLEAN VISION",
-    "stat1Desc": "Transparent government-vetted project roadmaps.",
-    "stat2Title": "MODERN DESIGN",
-    "stat2Desc": "State-of-the-art exhibition floor and digital networking.",
-    "serviceSub": "OUR SERVICES",
-    "serviceTitle": "WHAT WE DO?",
-    "serviceDesc": "We provide a fully integrated ecosystem for infrastructure professionals to collaborate, showcase, and secure project bids within the Egyptian market.",
-    "service1Title": "Project Showcasing",
-    "service1Desc": "Direct exposure to $400bn worth of active projects.",
-    "service2Title": "B2B Matchmaking",
-    "service2Desc": "Intelligent platform connecting with vetted leaders.",
-    "service3Title": "Policy Insight",
-    "service3Desc": "Exclusive access to closed-door regulatory briefings.",
-    "service4Title": "Strategic Growth",
-    "service4Desc": "Tools to scale your business within the continent.",
-    "sectorTitle": "MEGA SECTORS",
-    "sector1": "URBAN CITIES",
-    "sector2": "COASTAL EXPANSION",
-    "sector3": "ENERGY GRID",
-    "sector4": "TRANSPORTATION"
+    "heroTitle": "EGYPT",
+    "heroSubtitle": "Engineering the future of a nation with unmatched ambition.",
+    "newCollection": "NEW COLLECTION",
+    "infra2026": "Infrastructure 2026",
+    "category": "CATEGORY",
+    "urbanDev": "Urban Development",
+    "topPerf": "TOP PERFORMANCE",
+    "megaProjects": "Mega City Projects",
+    "introDesc": "Beyond the daily visual inspiration we draw from our heritage, we focus on all we create. To connect each line and piece to the Egyptian soul, used to create moments we are blessed to share with the world from this site.",
+    "legacyTitle": "Legacy",
+    "legacyPara": "A hand-drawn vision of intricate patterns and bright futures, these pieces invite you to interpret your own destiny from the details.",
+    "paradise": "A piece of paradise in your home",
+    "aboutTitle": "About",
+    "aboutPara": "EIE opened in 2026 as a concept hub to provide the latest infrastructure trends from around the globe under one roof at an affordable price.",
+    "joinJourney": "Join the journey",
+    "newVision": "New Vision",
+    "inWorks": "is already in the works",
+    "quote": "\"Architecture is the reach for truth.\"",
+    "author": "— Louis Kahn",
+    "contactUs": "Contact Us",
+    "getInTouch": "Get in touch with EIE"
   },
   "exhibitors": {
-    "sidebarTitle": "2026 EXHIBITION",
-    "subTitle": "02 // PIONEERS",
-    "title1": "INDUSTRY",
-    "title2": "ARCHITECTS",
-    "searchPlaceholder": "FILTER BY BRAND...",
-    "categoryConst": "CONSTRUCTION",
-    "categoryEnergy": "ENERGY",
-    "categorySmart": "SMART CITIES"
+    "heroTag": "EIE PARTNERS 2026",
+    "heroTitle1": "ARCHITECTS",
+    "heroTitle2": "OF MODERN",
+    "heroTitle3": "EGYPT",
+    "partnersCount": "Featured Partners",
+    "sectorsCount": "Mega Sectors",
+    "featuredTag": "FEATURED EXHIBITOR",
+    "companies": {
+      "1": "Orascom Construction",
+      "2": "Hassan Allam Holding",
+      "3": "Arab Contractors",
+      "4": "Schneider Electric",
+      "5": "ABB Egypt",
+      "6": "GAFI"
+    }
   },
   "agenda": {
-    "heroTitle": "CONGRESS AGENDA",
-    "heroDesc": "Two days of high-level strategic discourse on the foundations of a new Egypt.",
+    "heroTag": "CONFERENCE 2026",
+    "heroTitle1": "CURATED",
+    "heroTitle2": "INSIGHTS",
+    "heroDesc": "A carefully curated timeline of Egypt's most impactful infrastructure debates, panels, and project launches.",
     "day1": "DAY 01",
     "day2": "DAY 02",
-    "cta": "ADD TO CALENDAR"
-  },
-  "agenda_details": {
-    "speaker1": "Ministry of Transport, Egypt",
-    "room1": "Hall A",
-    "speaker2": "Dr. Ahmed Mansour",
-    "room2": "Executive Suite",
-    "speaker3": "Suez Canal Authority",
-    "room3": "Marine Hub",
-    "speaker4": "Siemens Energy",
-    "room4": "Green Zone",
-    "speaker5": "National Authority for Tunnels",
-    "room5": "Hall B",
-    "topic1": "Innovation in Railway Systems"
+    "cta": "ADD TO CALENDAR",
+    "sessions": {
+      "s1": {
+        "title": "Egypt's Infrastructure Vision 2030: Building Tomorrow's Nation Today",
+        "speaker": "Dr. Ahmed Mansour",
+        "room": "Grand Hall A",
+        "time": "09:00 AM",
+        "type": "KEYNOTE"
+      },
+      "s2": {
+        "title": "Public-Private Partnerships in Mega Infrastructure Projects",
+        "speaker": "Eng. Sarah Fouad",
+        "room": "Conference Room 204",
+        "time": "11:30 AM",
+        "type": "PANEL"
+      },
+      "s3": {
+        "title": "Smart City Technologies & Urban Digital Transformation",
+        "speaker": "Dr. Khaled Ibrahim",
+        "room": "Workshop Zone B",
+        "time": "02:00 PM",
+        "type": "WORKSHOP"
+      },
+      "s4": {
+        "title": "Green Infrastructure & Sustainable Development in the MENA Region",
+        "speaker": "International Panel",
+        "room": "Main Stage",
+        "time": "10:00 AM",
+        "type": "KEYNOTE"
+      },
+      "s5": {
+        "title": "Financing Egypt's Next-Generation Transport Network",
+        "speaker": "Dr. Nadia El-Sayed",
+        "room": "Investment Pavilion",
+        "time": "01:00 PM",
+        "type": "PANEL"
+      }
+    }
   },
   "footer": {
-    "desc": "The ultimate meeting point for global infrastructure leaders and Egypt's national visionaries.",
+    "joinExpo": "Join The Expo",
+    "infra2026": "INFRA 2026",
+    "brandTitle": "EGYPT INFRA",
+    "brandSubtitle": "INFRASTRUCTURE EXPO 2026",
     "quickLinks": "QUICK LINKS",
     "contact": "CONTACT US",
     "newsletter": "STAY INFORMED",
     "placeholder": "Enter your email",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "stayUpdated": "STAY UPDATED WITH OUR LATEST NEWS",
+    "privacy": "PRIVACY POLICY",
+    "terms": "TERMS OF USE"
+  },
+  "register": {
+    "tag": "REGISTRATION 2026",
+    "titlePart1": "JOIN THE",
+    "titlePart2": "MOVEMENT",
+    "desc": "Secure your place among the industry leaders and visionaries shaping the future of Egypt.",
+    "fullName": "Full Name",
+    "jobTitle": "Job Title",
+    "organization": "Organization",
+    "sectorPlaceholder": "Sector of Interest",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "submit": "CONFIRM ATTENDANCE"
+  },
+  "popup": {
+    "title": "Save the Date!",
+    "desc": "Join thousands of professionals at the Egypt Infrastructure Expo.",
+    "date": "March 18 – 20, 2026",
+    "location": "Egypt International Exhibition Center",
+    "cta": "Register Free"
   }
 }

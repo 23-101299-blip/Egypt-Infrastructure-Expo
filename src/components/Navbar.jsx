@@ -26,7 +26,8 @@ const Navbar = () => {
   }, [isOpen]);
 
   const toggleLanguage = () => {
-    i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en');
+    const newLang = i18n.language.startsWith('en') ? 'ar' : 'en';
+    i18n.changeLanguage(newLang);
   };
 
   const navLinks = [
@@ -60,6 +61,11 @@ const Navbar = () => {
               )}
             </Link>
           ))}
+
+          <button className="nav-lang-toggle" onClick={toggleLanguage} aria-label="Toggle language">
+            <Globe size={18} />
+            <span>{i18n.language.startsWith('en') ? 'AR' : 'EN'}</span>
+          </button>
 
           <Link to="/register" className="nav-cta-btn">
             {t('common.register')}
@@ -105,6 +111,17 @@ const Navbar = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                <button className="mobile-lang-btn" onClick={toggleLanguage}>
+                  <Globe size={20} />
+                  <span>{i18n.language.startsWith('en') ? 'العربية' : 'English'}</span>
+                </button>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45 }}
               >
                 <Link
@@ -112,7 +129,7 @@ const Navbar = () => {
                   className="mobile-cta"
                   onClick={() => setIsOpen(false)}
                 >
-                  REGISTER
+                  {t('common.register')}
                 </Link>
               </motion.div>
             </div>

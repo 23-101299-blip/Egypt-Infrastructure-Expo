@@ -536,6 +536,64 @@ h4, h5 {
   font-family: var(--font-arabic) !important;
 }
 
+/* ─────────────────────────────── RTL OVERRIDES ─── */
+[dir="rtl"] {
+  font-family: var(--font-arabic), sans-serif;
+}
+
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 {
+  line-height: 1.35 !important;
+  letter-spacing: 0 !important;
+}
+
+[dir="rtl"] .hero-title, [dir="rtl"] .bali-hero-title, [dir="rtl"] .editorial-main-title {
+  line-height: 1.2 !important;
+  margin-bottom: 20px;
+}
+
+[dir="rtl"] .tag-line::before {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+[dir="rtl"] .btn-premium::before {
+  transform-origin: right;
+}
+
+[dir="rtl"] .btn-premium:hover svg {
+  transform: translateX(-4px);
+}
+
+[dir="rtl"] .details-back-btn:hover {
+  transform: translateX(6px);
+}
+
+/* In Arabic, stroke-only text is unreadable — fill it with the primary color instead */
+[dir="rtl"] .outline-text {
+  color: var(--primary) !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+/* On hover: keep outline-text orange (NOT white — white is invisible on white background) */
+[dir="rtl"] .hero-title:hover .outline-text {
+  color: var(--primary) !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+/* Fix line-height so Arabic lines have enough breathing room */
+[dir="rtl"] .hero-title {
+  line-height: 1.45 !important;
+  letter-spacing: 0 !important;
+}
+
+/* Also ensure each line block has space */
+[dir="rtl"] .hero-title br + span,
+[dir="rtl"] .hero-title span {
+  display: inline-block;
+  margin-top: 8px;
+}
+
+
 .lang-toggle {
   background: var(--glass);
   border: 1px solid var(--glass-border);
